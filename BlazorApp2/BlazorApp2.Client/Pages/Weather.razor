@@ -1,4 +1,7 @@
 ﻿@page "/weather"
+@using BlazorApp2.Shared
+
+@inject IDealsService _dealsService
 
 <PageTitle>Weather</PageTitle>
 
@@ -33,10 +36,13 @@ else
             }
         </tbody>
     </table>
+
+    <MudText>dealName is @deal.Name</MudText>
 }
 
 @code {
     private WeatherForecast[]? forecasts;
+    private Deal deal;
 
     protected override async Task OnInitializedAsync()
     {
@@ -51,6 +57,9 @@ else
             TemperatureC = Random.Shared.Next(-20, 55),
             Summary = summaries[Random.Shared.Next(summaries.Length)]
         }).ToArray();
+
+
+        deal = _dealsService.GetDeal();
     }
 
     private class WeatherForecast

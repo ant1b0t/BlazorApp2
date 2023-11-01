@@ -1,5 +1,7 @@
 using BlazorApp2.Client.Pages;
 using BlazorApp2.Components;
+using BlazorApp2.Services;
+using BlazorApp2.Shared;
 using MudBlazor.Services;
 
 namespace BlazorApp2
@@ -19,6 +21,8 @@ namespace BlazorApp2
             builder.Services.AddControllers();
             builder.Services.AddSwaggerGen();
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddScoped<IDealsService, DealsService>();
 
             builder.Services.AddMudServices();
 
