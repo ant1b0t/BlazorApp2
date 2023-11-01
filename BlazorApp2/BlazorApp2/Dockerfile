@@ -10,7 +10,6 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["BlazorApp2/BlazorApp2/BlazorApp2.csproj", "BlazorApp2/BlazorApp2/"]
-COPY ["BlazorApp2.Shared/BlazorApp2.Shared.csproj", "BlazorApp2.Shared/"]
 COPY ["BlazorApp2/BlazorApp2.Client/BlazorApp2.Client.csproj", "BlazorApp2/BlazorApp2.Client/"]
 RUN dotnet restore "./BlazorApp2/BlazorApp2/./BlazorApp2.csproj"
 COPY . .
