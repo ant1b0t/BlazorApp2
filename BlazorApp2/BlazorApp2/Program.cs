@@ -14,12 +14,19 @@ namespace BlazorApp2
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
 
+
+            builder.Services.AddControllers();
+            builder.Services.AddSwaggerGen();
+            builder.Services.AddEndpointsApiExplorer();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseWebAssemblyDebugging();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
             else
             {
@@ -29,6 +36,8 @@ namespace BlazorApp2
             }
 
             app.UseHttpsRedirection();
+
+            app.MapControllers();
 
             app.UseStaticFiles();
             app.UseAntiforgery();
