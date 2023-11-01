@@ -6,3 +6,15 @@ services:
     build:
       context: .
       dockerfile: BlazorApp2/BlazorApp2/Dockerfile
+    ports:
+        - "8080:8080"
+    environment:
+      - TZ=Europe/Moscow
+      - ASPNETCORE_URLS=http://+:8080
+      - VIRTUAL_HOST=${BlazorApp2_PROD_DOMAIN}
+      - VIRTUAL_PORT=8080
+      - LETSENCRYPT_HOST=${BlazorApp2_PROD_DOMAIN}
+      
+networks:
+  default:
+    name: blazorapp2-network
