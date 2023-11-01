@@ -1,5 +1,6 @@
 using BlazorApp2.Client.Pages;
 using BlazorApp2.Components;
+using MudBlazor.Services;
 
 namespace BlazorApp2
 {
@@ -18,6 +19,8 @@ namespace BlazorApp2
             builder.Services.AddControllers();
             builder.Services.AddSwaggerGen();
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddMudServices();
 
             var app = builder.Build();
 
